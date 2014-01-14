@@ -1,54 +1,53 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My App</title>
+    <title>Tiperator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="default.css">
-    <style>
-      /* TODO */
-    </style>
+      <link rel="stylesheet" href="main.css">
   </head>
 
   <body>
     <div class="app-page" data-page="home">
-      <div class="app-topbar">
-        <div class="app-button left">Back</div>
-        <div class="app-title">Page title</div>
-        <div class="app-button right">Forward</div>
-      </div>
-      <div class="app-content">
-          <form id="calculator">
-    <p>Amount: <input id="amount" /></p>
-    <p>Tip Percentage: <input id="percentage" /></p>
-    <hr />
-    <p>Tip: <input id="tip" disabled="disabled" /></p>
-    <p>Total: <input id="total" disabled="disabled" /></p>
-    <p><input type="submit" /></p>
-</form>
-        <div class="app-section">
-          <div class="app-button" data-target="page2">Go to Page 2</div>
+        <div id="container">
+          <div class="app-content" >
+                <figure id="logo"></figure>
+              
+              
+                <form id="calculator">
+                    <section id="inputBox">
+                        <div class="inputHolder group">
+                            <label>Amount: $</label><input id="amount" />
+                        </div>
+                        <div class="inputHolder group">
+                            <label>% to Tip:</label><input id="percentage" />
+                        </div>
+                     </section>
+                    
+                    <section id="submitBox" class="group">
+                        <p><input value="Tiperate!"  type="submit" /></p>
+                    </section>
+                </form>
+                
+                <section id="outputBox">
+            <div class="group">
+                <p class="outputLabel">Your tip is... </p><div id="tip" class="outputResult"></div>
+            </div>
+             <div class="group">
+              <p class="outputLabel">Your total is... </p><div id="total" class="outputResult"/></div>
+            </div>
+        </section>
+            
+            
+          </div>
+        <figure id="wow"></figure>
         </div>
-      </div>
-    </div>
-
-    <div class="app-page" data-page="page2">
-      <div class="app-topbar">
-        <div class="app-button left" data-back="true">Back</div>
-        <div class="app-title">Page 2</div>
-      </div>
-      <div class="app-content">
-        Page 2 is lonely
-      </div>
+      
     </div>
 
     <script src="zepto.js"></script>
     <script src="app.js"></script>
     <script>
       App.populator('home', function (page) {
-        // put stuff here
-      });
-
-      App.populator('page2', function (page) {
         // put stuff here
       });
 
@@ -83,8 +82,9 @@ function calculate () {
     // which is a property of all numbers. This
     // makes sure there are only two digits after
     // the decimal point.
-    $('#tip').val( tip.toFixed(2) );
-    $('#total').val( total.toFixed(2) );
+    //$('#tip').( tip.toFixed(2) );
+    document.getElementById("tip").innerHTML = "$" +(tip.toFixed(2)).toString();
+    document.getElementById("total").innerHTML = "$" + (total.toFixed(2)).toString();
     
     // submit event fucntions must return false,
     // to tell the browser not to load a new page.
